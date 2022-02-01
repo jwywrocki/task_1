@@ -4,6 +4,7 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="css/style.css" />
         <link
             href="https://fonts.googleapis.com/css2?family=Spartan:wght@200&display=swap"
             rel="stylesheet"
@@ -26,130 +27,6 @@
                 <div class="arrPrintEven"></div>
             </div>
         </div>
-        <script type="text/javascript">
-            function myFunction() {
-                var array = [];
-                var arrayOdd = [];
-                var arrayEven = [];
-                for (var i = 0; i < 20; i++) {
-                    var r = Math.floor(Math.random() * 100) + 1;
-                    array.push(r);
-                    if (r % 2 != 0) arrayOdd.push(r);
-                    else arrayEven.push(r);
-                }
-                document.querySelector(".entryArray").innerHTML =
-                    array.join(" ");
-                arrayOdd.sort((a, b) => {
-                    if (a > b) return 1;
-                    if (a < b) return -1;
-                    return 0;
-                });
-                arrayEven.sort((a, b) => {
-                    if (a > b) return 1;
-                    if (a < b) return -1;
-                    return 0;
-                });
-                console.log(arrayOdd);
-                console.log(arrayEven);
-                document.querySelector(".arrPrintOdd").innerHTML =
-                    arrayOdd.join("<p>");
-                document.querySelector(".arrPrintEven").innerHTML =
-                    arrayEven.join("<p>");
-            }
-        </script>
-        <style type="text/css">
-            :root {
-                --bright: #f5f5f5;
-                --dark: #05090c;
-                --backgroundColor: #0b1218;
-                --darkBackgroundColor: #090f14;
-                --primaryColor: #00efff;
-                --contentPadding: 1rem min(10vw, 10rem);
-                --contentHorizontalMargin: 0 min(10vw, 10rem);
-            }
-            *,
-            *::before,
-            *::after {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
-            html {
-                font-size: 16px;
-            }
-            .content {
-                display: flex;
-                flex-direction: column;
-                font-size: 1rem;
-                font-family: "Spartan", sans-serif;
-                text-align: center;
-                padding: var(--contentPadding);
-                word-spacing: 10px;
-                color: var(--primaryColor);
-                background-color: var(--backgroundColor);
-            }
-            .entryArray {
-                padding: 1rem;
-                border-bottom: 1px solid var(--primaryColor);
-            }
-            .columnWraper {
-                display: grid;
-                grid-template-areas: "odd button even";
-                padding: 1rem 0;
-            }
-            .oddCol {
-                grid-area: odd;
-                padding: 0.8rem;
-            }
-            .evenCol {
-                grid-area: even;
-                padding: 0.8rem;
-            }
-            .oddCol > *,
-            .evenCol > * {
-                padding: 0.8rem;
-            }
-            .arrPrintOdd > *,
-            .arrPrintEven > * {
-                padding: 0.5rem;
-            }
-            .button {
-                grid-area: button;
-                align-self: center;
-                background-color: var(--backgroundColor);
-                min-width: 150px;
-                padding: 1rem;
-                border: 1px solid var(--primaryColor);
-                text-decoration: none;
-                font-family: "Spartan", sans-serif;
-                color: var(--primaryColor);
-                font-size: 1rem;
-                text-align: center;
-                transition: all 0.4s;
-                cursor: pointer;
-            }
-            .button:hover {
-                color: var(--dark);
-                background-color: var(--primaryColor);
-            }
-            @media (max-width: 450px) {
-                .content {
-                    font-size: 0.9rem;
-                }
-                .columnWraper {
-                    grid-template-areas:
-                        "button button"
-                        "odd even";
-                }
-                .button {
-                    padding: 0.7rem;
-                }
-            }
-            @media (min-width: 1024px) {
-                .content {
-                    margin: var(--contentHorizontalMargin);
-                }
-            }
-        </style>
+        <script src="js/main.js"></script>
     </body>
 </html>
