@@ -15,7 +15,7 @@
     box-sizing: border-box;
 }
 html {
-    font-size: 16px;
+    font-size: clamp(0.8rem, 4vw, 1.5rem);
 }
 .content {
     display: flex;
@@ -36,6 +36,7 @@ html {
     display: grid;
     grid-template-areas: "odd button even";
     padding: 1rem 0;
+    flex: 1;
 }
 .oddCol {
     grid-area: odd;
@@ -49,13 +50,16 @@ html {
 .evenCol > * {
     padding: 0.8rem;
 }
-.arrPrintOdd > *,
-.arrPrintEven > * {
-    padding: 0.5rem;
+.arrPrintOdd,
+.arrPrintEven {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 .button {
     grid-area: button;
-    align-self: center;
+    align-self: top;
+    height: fit-content;
     background-color: var(--backgroundColor);
     min-width: 150px;
     padding: 1rem;
@@ -72,10 +76,7 @@ html {
     color: var(--dark);
     background-color: var(--primaryColor);
 }
-@media (max-width: 450px) {
-    .content {
-        font-size: 0.9rem;
-    }
+@media (max-width: 500px) {
     .columnWraper {
         grid-template-areas:
             "button button"
@@ -85,7 +86,7 @@ html {
         padding: 0.7rem;
     }
 }
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
     .content {
         margin: var(--contentHorizontalMargin);
     }
