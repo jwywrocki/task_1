@@ -11,22 +11,18 @@
         />
         <title>JS Arrays</title>
     </head>
-    <body class="content">
-        <h1>Entry Array</h1>
-        <div class="entryArray"></div>
-        <div class="columnWraper">
-            <div class="oddCol">
-                <h2>Odd</h2>
-                <div class="arrPrintOdd"></div>
-            </div>
-            <button class="button" onclick="myFunction()">
-                Hello :)<br />Let's sort things out
-            </button>
-            <div class="evenCol">
-                <h2>Even</h2>
-                <div class="arrPrintEven"></div>
-            </div>
+    <body class="wrapper">
+        <div class="container">
+            <h1 class="header header--entry">Array</h1>
+            <div class="array array--entry"></div>
+
+            <h1 class="header header--odd">Odd</h1>
+            <div class="array array--odd"></div>
+
+            <h1 class="header header--even">Even</h1>
+            <div class="array array--even"></div>
+            <button class="button" onclick="init()">Hello :)<br />Generate and sort array</button>
+            <script src="js/main.js"></script>
         </div>
-        <script src="js/main.js"></script>
     </body>
 </html>

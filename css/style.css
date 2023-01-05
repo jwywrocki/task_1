@@ -1,11 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap');
 :root {
     --bright: #f5f5f5;
     --dark: #05090c;
     --backgroundColor: #0b1218;
     --darkBackgroundColor: #090f14;
-    --primaryColor: #00efff;
-    --contentPadding: 1rem min(10vw, 10rem);
-    --contentHorizontalMargin: 0 min(10vw, 10rem);
+    --primaryColor: #00f0ff;
+    --clamp: clamp(0.1rem, 5vw, 2rem);
 }
 *,
 *::before,
@@ -14,61 +14,88 @@
     padding: 0;
     box-sizing: border-box;
 }
-html {
-    font-size: clamp(0.8rem, 4vw, 1.5rem);
-}
-.content {
-    display: flex;
-    flex-direction: column;
-    font-size: 1rem;
-    font-family: "Spartan", sans-serif;
-    text-align: center;
-    padding: var(--contentPadding);
-    word-spacing: 10px;
-    color: var(--primaryColor);
-    background-color: var(--backgroundColor);
-}
-.entryArray {
-    padding: 1rem;
-    border-bottom: 1px solid var(--primaryColor);
-}
-.columnWraper {
+.wrapper {
     display: grid;
-    grid-template-areas: "odd button even";
-    padding: 1rem 0;
-    flex: 1;
+    height: 100vh;
+    max-width: 1200px;
+    margin-inline: auto;
+    align-items: center;
+    background-color: var(--darkBackgroundColor);
+    font-size: clamp(0.9rem, 1.5vw, 1.5rem);
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    color: var(--primaryColor);
 }
-.oddCol {
-    grid-area: odd;
-    padding: 0.8rem;
+.container {
+    display: grid;
+    grid-template-areas:
+        'header-entry header-entry'
+        'array-entry array-entry'
+        'button button'
+        'header-odd header-odd'
+        'array-odd array-odd'
+        'header-even header-even'
+        'array-even array-even';
+    margin: 0 var(--clamp);
 }
-.evenCol {
-    grid-area: even;
-    padding: 0.8rem;
+.header {
+    display: none;
+    font-size: 1.2em;
+    font-weight: 200;
+    text-transform: uppercase;
 }
-.oddCol > *,
-.evenCol > * {
-    padding: 0.8rem;
+.header--entry {
+    grid-area: header-entry;
 }
-.arrPrintOdd,
-.arrPrintEven {
+.header--odd {
+    grid-area: header-odd;
+}
+.header--even {
+    grid-area: header-even;
+}
+.array {
+    display: none;
+    grid-template-columns: repeat(auto-fit, 2.5em);
+    grid-template-rows: 2.5em;
+    justify-content: center;
+    gap: 0.5em;
+    margin: 2em;
+}
+.array--entry {
+    grid-area: array-entry;
+}
+.array--odd {
+    grid-area: array-odd;
+}
+.array--even {
+    grid-area: array-even;
+}
+.array__tile {
+    width: 2.5em;
+    height: 2.5em;
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    font-weight: 200;
+    border-radius: 0.5em;
+    background-color: var(--backgroundColor);
 }
 .button {
     grid-area: button;
-    align-self: top;
     height: fit-content;
     background-color: var(--backgroundColor);
-    min-width: 150px;
-    padding: 1rem;
+    padding: 1em;
+    margin: 0 2em 2em 2em;
     border: 1px solid var(--primaryColor);
+    border-radius: 0.5em;
     text-decoration: none;
-    font-family: "Spartan", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     color: var(--primaryColor);
-    font-size: 1rem;
+    font-size: 0.8em;
+    font-weight: 400;
     text-align: center;
+    text-transform: uppercase;
+    line-height: 1.5em;
     transition: all 0.4s;
     cursor: pointer;
 }
@@ -76,18 +103,13 @@ html {
     color: var(--dark);
     background-color: var(--primaryColor);
 }
-@media (max-width: 500px) {
-    .columnWraper {
+@media (min-width: 600px) {
+    .container {
         grid-template-areas:
-            "button button"
-            "odd even";
-    }
-    .button {
-        padding: 0.7rem;
-    }
-}
-@media (min-width: 1280px) {
-    .content {
-        margin: var(--contentHorizontalMargin);
+            'header-entry header-entry header-entry header-entry'
+            'array-entry array-entry array-entry array-entry'
+            ' . button button . '
+            'header-odd header-odd header-even header-even'
+            'array-odd array-odd array-even array-even';
     }
 }
